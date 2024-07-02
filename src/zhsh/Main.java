@@ -34,5 +34,18 @@ public class Main {
 
 		int distance3 = Tree.ZhangShasha(tree5, tree6);
 		System.out.println("Expected 2; got " + distance3);
+
+
+		double distance4 = Tree.NormalisedZhangShasha(tree1, tree2);
+		System.out.println("Expected 1/3; got " + distance4);
+
+		double distance5 = Tree.NormalisedZhangShasha(tree3, tree4);
+		System.out.println("Expected 1/8; got " + distance5);
+
+		double distance6 = Tree.NormalisedZhangShasha(tree5, tree6);
+		System.out.println("Expected 1; got " + distance6);
+
+		double distance7 = Tree.NormalisedZhangShasha(tree5, tree5);
+		System.out.println("Expected 0; got " + distance7);
 	}
 }

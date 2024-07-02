@@ -142,6 +142,37 @@ public class Tree {
 		return TD[l1.size()][l2.size()];
 	}
 
+
+	public static double NormalisedZhangShasha(Tree tree1, Tree tree2) {
+		tree1.index();
+		tree1.l();
+		tree1.keyroots();
+		tree1.traverse();
+		tree2.index();
+		tree2.l();
+		tree2.keyroots();
+		tree2.traverse();
+
+		ArrayList<Integer> l1 = tree1.l;
+		ArrayList<Integer> keyroots1 = tree1.keyroots;
+		ArrayList<Integer> l2 = tree2.l;
+		ArrayList<Integer> keyroots2 = tree2.keyroots;
+
+		// space complexity of the algorithm
+		TD = new int[l1.size() + 1][l2.size() + 1];
+
+		// solve subproblems
+		for (int i1 = 1; i1 < keyroots1.size() + 1; i1++) {
+			for (int j1 = 1; j1 < keyroots2.size() + 1; j1++) {
+				int i = keyroots1.get(i1 - 1);
+				int j = keyroots2.get(j1 - 1);
+				TD[i][j] = treedist(l1, l2, i, j, tree1, tree2);
+			}
+		}
+
+		return (double) TD[l1.size()][l2.size()] /Math.max(l1.size(), l2.size());
+	}
+
 	private static int treedist(ArrayList<Integer> l1, ArrayList<Integer> l2, int i, int j, Tree tree1, Tree tree2) {
 		int[][] forestdist = new int[i + 1][j + 1];
 
